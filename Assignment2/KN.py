@@ -1,0 +1,34 @@
+from matplotlib import pyplot as plt
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+
+digits = load_digits()
+
+X_train, X_test, y_train, y_test = train_test_split(digits.data,digits.target,stratify=digits.target, random_state =2021)
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train_sc = scaler.transform(X_train)
+X_test_sc = scaler.transform(X_test)
+
+y_train_hat = list()
+y_test_hat= list()
+
+for k in range(1,20):
+    KNclf = KNeighborsClassifier(n_neighbors=k)
+    KNclf.fit(X_train_sc, y_train)
+    y_train_hat.append(accuracy_score(y_train, KNclf.predict(X_train_sc)))
+    y_test_hat.append(accuracy_score(y_test, KNclf.predict(X_test_sc)))
+    
+plt.plot(range(1,20), y_train_hat)
+plt.plot(range(1,20), y_test_hat)
+plt.title('KNeighbors')
+plt.xlabel('n_neighbors')
+plt.ylabel('accuracy_score')
+plt.legend(['train accuracy', 'test accuracy'])
+plt.show()
+
+#k=3
+print(y_test_hat)

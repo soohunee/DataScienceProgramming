@@ -1,0 +1,33 @@
+from matplotlib import pyplot as plt
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+
+digits = load_digits()
+
+X_train, X_test, y_train, y_test = train_test_split(digits.data,digits.target,stratify=digits.target, random_state =2021)
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train_sc = scaler.transform(X_train)
+X_test_sc = scaler.transform(X_test)
+
+y_train_hat = list()
+y_test_hat= list()
+
+for k in range(141, 142):
+    MLPclf = MLPClassifier(max_iter=k, random_state=2021)
+    MLPclf.fit(X_train_sc, y_train)
+    y_train_hat.append(accuracy_score(y_train, MLPclf.predict(X_train_sc)))
+    y_test_hat.append(accuracy_score(y_test, MLPclf.predict(X_test_sc)))
+
+'''
+plt.plot(range(1,10), y_train_hat)
+plt.plot(range(1,10￩), y_test_hat)
+plt.title('MLP')
+plt.legend(['train accuracy', 'test accuracy'])
+plt.show()
+'''
+#k = 143
+print(y_test_hat)
