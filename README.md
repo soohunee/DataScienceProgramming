@@ -3,7 +3,7 @@
 |Assignment|Contents|Description|
 |------|---|---|
 |Assignment1|K-Neareast Neighbors|Classification with k-NN tuning|
-|Assignment2|Comparison of Supervised Learning Algorithms|K-Nearest Neighbors|
+|Assignment2|Comparison of Supervised Learning Algorithms|K-Nearest Neighbors\n|
 |||Decision Tree|
 |||Random Forest|
 |||Support Vector Machine|
