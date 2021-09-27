@@ -10,3 +10,5 @@
 |||MultiLayer Perception|
 |Assignment3|Neural Network|Hyperparameter Tuning for Neural Networks|
 |Assignment4|PCA & tSNE|Data Visualization|
+|Assignment5|Feature Engineering|Binning, Polynomials&Interactions, Feature Selection, etc.|
+|Assignment6|AutoML|Construct AutoML Pipeling & Search Space|
